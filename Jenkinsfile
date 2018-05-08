@@ -21,7 +21,10 @@ stages {
       sh 'mvn deploy'
       }
    }
-   
  }
- 
+   post {
+        always {
+            archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+        }
+    }
 }
