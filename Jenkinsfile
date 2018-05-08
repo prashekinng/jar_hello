@@ -1,6 +1,6 @@
 pipeline {
    options {
-    buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
+    buildDiscarder(logRotator(numToKeepStr: '50', artifactNumToKeepStr: '50'))
   }
 agent any 
 stages {
@@ -28,6 +28,7 @@ stages {
    post {
         always {
             archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+           junit 'target/surefire-reports/*.xml'
         }
     }
 }
