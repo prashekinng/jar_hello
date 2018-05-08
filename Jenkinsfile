@@ -28,6 +28,11 @@ stages {
    post {
         always {
             archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'target/***', fingerprint: true
+        }
+    }
+   post {
+      always {
            junit 'target/surefire-reports/*.xml'
         }
     }
