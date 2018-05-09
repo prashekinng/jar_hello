@@ -34,7 +34,7 @@ stages {
             archiveArtifacts artifacts: 'target/***', fingerprint: true
         }
         failure {
-            echo 'JENKINS PIPELINE UNSUCCESSFUL'
+            mail to: naredla.ramireddy@gmil.com, subject: 'The Pipeline failed :('
         }
         unstable {
             echo 'JENKINS PIPELINE WAS MARKED AS UNSTABLE'
