@@ -34,12 +34,19 @@ stages {
             archiveArtifacts artifacts: 'target/***', fingerprint: true
         }
         failure {
-          emailext (
-            subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-              <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            to: "naredla.ramireddy@gmail.com"
-          )
+          extendedEmail {
+           recipientList('${EMAIL_RECIPIENTS}')
+    triggers {
+        failure {
+            subject('The subject')
+            content("The content")
+            sendTo {
+                recipientList("naredla.ramireddy@gmail.com")
+            }
+        }
+    }
+}
+          
         }
         unstable {
             echo 'JENKINS PIPELINE WAS MARKED AS UNSTABLE'
