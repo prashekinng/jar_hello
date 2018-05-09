@@ -6,6 +6,7 @@
 
   <groupId>jar_hello</groupId>
   <artifactId>jar_artifact</artifactId>
+	
   <version>1.0</version>
 
   <name>jar_artifact</name>
