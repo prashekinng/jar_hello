@@ -24,7 +24,11 @@ stages {
       sh 'mvn deploy'
       }
    }
-   
+   stage("Docker build") {
+      steps {
+        sh "docker build -t="hello" ."
+      }
+    }
  }
    post {
         always {
