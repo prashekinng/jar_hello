@@ -21,9 +21,14 @@ stages {
    }
    stage ('Deploying to Nexus') {
    steps {
-      sh 'mv deploy'
+      sh 'mvn deploy'
       }
    }
+   stage("Docker build") {
+      steps {
+        sh "docker build -t hellojar:${BUILD_NUMBER} ."
+      }
+    }
  }
    post {
         always {
@@ -34,11 +39,7 @@ stages {
             archiveArtifacts artifacts: 'target/***', fingerprint: true
         }
         failure {
-          emailext (
-                to: "naredla.ramireddy@gmail.com"
-                subject: "SUCCESS",
-                body: "SUCCESS!"
-            )
+          echo 'JENKINS PIPELINE WAS MARKED AS UNSTABLE'
         }
         unstable {
             echo 'JENKINS PIPELINE WAS MARKED AS UNSTABLE'
