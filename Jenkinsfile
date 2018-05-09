@@ -16,7 +16,7 @@ stages {
    }
    stage ('package') {
    steps {
-      sh 'mvn packagee'
+      sh ' package'
       }
    }
    stage ('Deploying to Nexus') {
