@@ -35,6 +35,7 @@ stages {
                           usernameVariable: 'reddydevops', passwordVariable: 'szumuqiz']]) {
           sh "docker login --username $USERNAME --password $PASSWORD"
         }
+        }
       }
       stage("Docker push") {
       steps {
