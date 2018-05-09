@@ -24,24 +24,8 @@ stages {
       sh 'mvn deploy'
       }
    }
-   stage("Docker build") {
-      steps {
-        sh "docker build -t hello ."
-      }
-    }
-   stage("Docker login") {
-      steps {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'leszko',
-                          usernameVariable: 'reddydevops', passwordVariable: 'szumuqiz']]) {
-          sh "docker login --username $USERNAME --password $PASSWORD"
-        }
-        }
-      }
-      stage("Docker push") {
-      steps {
-        sh "docker push hello"
-      }
-    }
+   
+     
  }
    post {
         always {
