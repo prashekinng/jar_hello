@@ -35,7 +35,7 @@ stages {
             echo 'JENKINS PIPELINE SUCCESSFUL'
         }
         failure {
-            echo 'JENKINS PIPELINE FAILED'
+            mail to: naredla.ramireddy@gmail.com, subject: 'The Pipeline failed :('
         }
         unstable {
             echo 'JENKINS PIPELINE WAS MARKED AS UNSTABLE'
