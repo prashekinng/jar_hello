@@ -16,7 +16,7 @@ stages {
    }
    stage ('package') {
    steps {
-      sh ' package'
+      sh 'mvn package'
       }
    }
    stage ('Deploying to Nexus') {
@@ -27,15 +27,14 @@ stages {
  }
    post {
         always {
-            archiveArtifacts artifacts: '**/*.jar', fingerprint: true
-            archiveArtifacts artifacts: 'target/***', fingerprint: true
            junit 'target/surefire-reports/*.xml'
         }
         success {
-            echo 'JENKINS PIPELINE SUCCESSFUL'
+            archiveArtifacts artifacts: '**/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'target/***', fingerprint: true
         }
         failure {
-            echo 'JENKINS PIPELINE unSUCCESSFUL'
+            echo 'JENKINS PIPELINE UNSUCCESSFUL'
         }
         unstable {
             echo 'JENKINS PIPELINE WAS MARKED AS UNSTABLE'
