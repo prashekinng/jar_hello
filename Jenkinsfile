@@ -24,11 +24,7 @@ stages {
       sh 'mvn deploy'
       }
    }
-   stage("Docker build") {
-      steps {
-        sh "docker build -t hellojar:${BUILD_NUMBER} ."
-      }
-    }
+   
  }
    post {
         always {
