@@ -35,7 +35,7 @@ stages {
         }
         failure {
           emailext (
-                to: naredla.ramireddy@gmail.com
+                to: "naredla.ramireddy@gmail.com"
                 subject: "SUCCESS",
                 body: "SUCCESS!"
             )
