@@ -36,7 +36,7 @@ stages {
       }
    stage("Docker push") {
       steps {
-         sh "docker push hello${BUIDL_NUMBER}:Latest"
+         sh "docker push hello${BUILD_NUMBER}"
       }
     }
     }
