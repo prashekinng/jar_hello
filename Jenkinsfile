@@ -26,7 +26,7 @@ stages {
    }
    stage("Docker build") {
       steps {
-        sh "docker build -t hello:${BUILD_NUMBER} ."
+         sh "docker build -t hello${BUILD_NUMBER}:Latest ."
       }
    }
    stage("Docker login") {
