@@ -29,8 +29,12 @@ stages {
         sh "docker build -t hello:${BUILD_NUMBER} ."
       }
    }
-     
- }
+   stage("Docker login") {
+      steps {
+        sh 'docker login -u reddydevops -p szumuqiz'
+        }
+      }
+    }
    post {
         always {
            junit 'target/surefire-reports/*.xml'
