@@ -28,7 +28,7 @@ stages {
       steps {
         sh "docker build -t hello:${BUILD_NUMBER} ."
       }
-   
+   }
      
  }
    post {
