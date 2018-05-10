@@ -34,6 +34,11 @@ stages {
         sh 'docker login -u reddydevops -p szumuqiz'
         }
       }
+   stage("Docker push") {
+      steps {
+         sh "docker push hello${BUIDL_NUMBER}:Latest"
+      }
+    }
     }
    post {
         always {
